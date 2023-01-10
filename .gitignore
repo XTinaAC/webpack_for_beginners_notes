@@ -1,0 +1,7 @@
+# dependencies
+/node_modules/*
+/build
+*7z
+
+# logfiles
+npm-debug.log*
