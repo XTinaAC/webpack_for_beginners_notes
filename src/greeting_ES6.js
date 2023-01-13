@@ -1,6 +1,5 @@
 function sayHello(){
-    let msg = `你好~ webpack + ${'es6'}!`
-    alert(msg);
+    let msg = `你好~ Tina + ${'es6'}!`
     console.log(msg);
 }
 export { sayHello };

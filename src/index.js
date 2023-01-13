@@ -6,5 +6,4 @@ sayHello();
 import { sayHello as sayHi } from './greeting_ES6';
 sayHi();
 
-import css from "./greeting.css";
 import scss from "./greeting.scss";

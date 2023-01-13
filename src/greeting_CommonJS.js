@@ -1,4 +1,4 @@
 function sayHello(){
-    alert("你好~ webpack + common_js!")
+    console.log("你好~ Tina + common_js!")
 }
 module.exports = sayHello;
