@@ -5,6 +5,11 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+/*
+【 loaders 】 tell webpack how to interpret and transpile the source code;
+【 plugins 】 enable bundle-optimizing 
+*/
+
 module.exports = {
     watch: true, // automatically rebuild when changes are made to source files (src目录)
     mode: "development", // 优先级 < package.json scripts字段的构建指令中的 --mode 配置
@@ -28,10 +33,27 @@ module.exports = {
     // },
 
     // 多入口多出口
-    entry: {
-        xtina: "./src/index.js",
-        aaron: "./src/index1.js"
+    // entry: {
+    //     xtina: "./src/index.js",
+    //     aaron: "./src/index1.js"
+    // },
+
+    resolve: {
+        // Add a [resolve.alias] to resources instead of using the complex relative/absolute path
+        alias: {
+            JsFolder: path.resolve(__dirname, 'src/scripts'),
+            CssFolder: path.resolve(__dirname, 'src/styles'),
+            ImgFolder: path.resolve(__dirname, 'src/images'),
+        },
+        // look for dependencies in [src/custom_libs] before the default [node_modules] dir
+        // 例如：import $ from 'jquery' 先查找【src/custom_libs/jquery】, 若不存在则查找【node_modules/jquery】
+        modules: [path.resolve(__dirname, 'src/custom_libs'), 'node_modules']
     },
+    entry: {
+        xtina: 'JsFolder/index.js',
+        aaron: 'JsFolder/index1.js'
+    },
+
     output: {
         // - - use the "entry" property names as substitution;
         // filename: "[name].js",
